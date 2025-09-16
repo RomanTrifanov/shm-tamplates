@@ -1,5 +1,5 @@
 {{ limit = 5, data = [], offset = ( args0 || 0 ) }}
-{{ items_all = bonus.limit(300).filter( user_id = user.id).items.size }}
+{{ items_all = bonus.limit(100).filter( user_id = user.id).items.size }}
 {{ TEXT = BLOCK }}
   {{ IF ! items_all }}
 Пока здесь ничего нет
