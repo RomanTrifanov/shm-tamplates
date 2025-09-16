@@ -47,44 +47,44 @@ ID: {{ user_service_id || 'Услуга удалена' }}
 {{ IF offset == 0 && items.size == limit }}
   {{ data.push(
       [{
-        "text" = '⇨⇨⇨ стр. ' _ ( page_n + 1 )
-        "callback_data" = '/bonus_history ' _ (limit + offset)
+        text = '⇨⇨⇨ стр. ' _ ( page_n + 1 )
+        callback_data = '/bonus_history ' _ (limit + offset)
       }]
     )
   }}
   {{ ELSIF offset != 0 && items.size == limit && offset != ( items_all - limit ) }}
   {{ data.push(
       [{
-        "text" = 'стр. '_ ( page_n - 1 ) _ ' ⇦⇦⇦'
-        "callback_data" = '/bonus_history ' _ (offset - limit)
+        text = 'стр. '_ ( page_n - 1 ) _ ' ⇦⇦⇦'
+        callback_data = '/bonus_history ' _ (offset - limit)
       }
       {
-        "text" = '⇨⇨⇨ стр. ' _ ( page_n + 1 )
-        "callback_data" = '/bonus_history ' _ (limit + offset)
+        text = '⇨⇨⇨ стр. ' _ ( page_n + 1 )
+        callback_data = '/bonus_history ' _ (limit + offset)
       }]
     )
   }}
   {{ ELSIF items.size && items.size != 0 && offset != 0  }}
   {{ data.push(
       [{
-        "text" = 'стр. ' _ ( page_n - 1 ) _ ' ⇦⇦⇦'
-        "callback_data" = '/bonus_history ' _ (offset - limit)
+        text = 'стр. ' _ ( page_n - 1 ) _ ' ⇦⇦⇦'
+        callback_data = '/bonus_history ' _ (offset - limit)
       }]
     )
   }}
 {{ END }}
 {{ data.push(
     [{
-      "text" = '⇦  Бонусная программа'
-      "callback_data" = '/referrals <--bonus_history'
+      text = '⇦  Бонусная программа'
+      callback_data = '/referrals <--bonus_history'
     }]
   )
 }}
-{{ tg_api( "editMessageText" = {
-        "message_id" = bot_message_id
-        "parse_mode" = "HTML"
-        "disable_notification" = "true"
-        "text" = TEXT
-        "reply_markup" = { "inline_keyboard" = data }
+{{ tg_api( editMessageText = {
+        message_id = bot_message_id
+        parse_mode = "HTML"
+        disable_notification = "true"
+        text = TEXT
+        reply_markup = { inline_keyboard = data }
     })
 }}
