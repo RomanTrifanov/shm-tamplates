@@ -3,10 +3,33 @@
 Пример кода кнопки:
 
 ```
-[
-  {
-    "text": "Показать твой QR",
-    "web_app": { "url": "{{ config.api.url }}/shm/v1/template/generate_ref_qr?format=html&session_id={{ user.gen_session.id }}"}
-  }
-]
+[{
+  "text": "Показать твой QR",
+  "web_app": { "url": "{{ config.api.url }}/shm/v1/template/generate_ref_qr?format=html&session_id={{ user.gen_session.id }}"}
+}]
+```
+
+
+**telegram_bot_bonus_history.tpl** - шаблон для просмотра истории бонусов в телеграм боте.
+
+В коде шаблона телеграм бота добавить кейс ```/bonus_history```
+
+```
+<% CASE '/bonus_history' %>
+{{ args.0 =  args.0.match('from') ? 0 : args.0 }}
+{{ my_vars = {
+     args0 = args.0
+     bot_message_id = message.message_id
+     }
+}}
+{{ tpl.id( 'telegram_bot_bonus_history' ).parse('vars', my_vars ) }}
+```
+
+Добавить кнопку для вызова кейса в желаемое место, например в раздел реферальной программы.
+пример
+```
+[{
+  "text" = "⚡️ История бонусов"
+  "callback_data" = "/bonus_history"
+}]
 ```
