@@ -9,7 +9,9 @@
   "web_app": { "url": "{{ config.api.url }}/shm/v1/template/generate_ref_qr?format=html&session_id={{ user.gen_session.id }}"}
 }]
 ```
+
 ---
+
 
 ### telegram_bot_bonus_history.tpl
 ```telegram_bot_bonus_history.tpl``` - шаблон для просмотра истории бонусов в телеграм боте.
