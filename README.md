@@ -1,4 +1,4 @@
-**generate_ref_qr** - настраеваемый шаблон SHM (https://myshm.ru/), генерирует партнерский QR-код для вывода в telegram bot по кнопке.
+- **generate_ref_qr.tpl** - настраеваемый шаблон SHM (https://myshm.ru/), генерирует партнерский QR-код для вывода в telegram bot по кнопке.
 
 Пример кода кнопки:
 
@@ -10,13 +10,12 @@
 ```
 
 
-**telegram_bot_bonus_history.tpl** - шаблон для просмотра истории бонусов в телеграм боте.
+- **telegram_bot_bonus_history.tpl** - шаблон для просмотра истории бонусов в телеграм боте.
 
 В коде шаблона телеграм бота добавить кейс ```/bonus_history```
 
 ```
 <% CASE '/bonus_history' %>
-{{ args.0 =  args.0.match('from') ? 0 : args.0 }}
 {{ my_vars = {
      args0 = args.0
      bot_message_id = message.message_id
